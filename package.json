@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tw": "postcss src/styles/compile.css -o public/styles/tailwind.css"
+    "tailwind": "postcss src/styles/compile.css -o src/styles/tailwind.css"
   },
   "keywords": [],
   "author": "Roman N.",
@@ -14,5 +14,8 @@
     "postcss": "^8.3.5",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.2"
+  },
+  "dependencies": {
+    "tailwindcss": "^2.2.4"
   }
 }

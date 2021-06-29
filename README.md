@@ -1,6 +1,6 @@
-# Project Name
+# CSS Selectors
 
-Short project description. What's the puspose of this project. The main idea and core. Or something else...
+List of CSS3 selectors
 
 ## Getting started
 
