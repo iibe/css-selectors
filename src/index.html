@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selectors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/tailwind.css" />
+    <link rel="stylesheet" href="./styles/selector.css" />
+    <!-- Teporary -->
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="
+      min-w-screen min-h-full
+      grid grid-cols-1
+      md:grid-cols-2
+      xl:grid-cols-4
+      p-3
+      gap-3
+    "
+  >
+    <!-- Selector 1 -->
+    <ol class="universal-selector" data-selector="*">
+      <li>Content 1</li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 2 -->
+    <ol id="id-selector" data-selector="#X">
+      <li>Content 1</li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 3 -->
+    <ol class="class-selector" data-selector=".X">
+      <li>Content 1</li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 4 -->
+    <ol class="context-selector" data-selector="X Y">
+      <li>Content 1</li>
+      <li><a>Linkage 2</a></li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a>Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 5 -->
+    <ol class="tag-selector" data-selector="X">
+      <li>Content 1</li>
+      <li><a>Linkage 2</a></li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a>Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 6 -->
+    <ol class="a-selectors" data-selector="X:link X:visited">
+      <li><a href="#">Linkage 1</a></li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a href="#">Linkage 3.2</a></li>
+        <li><a href="#">Linkage 3.3</a></li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 7 -->
+    <ol class="neighbour-selector" data-selector="X + Y">
+      <li>Content 1</li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 8 -->
+    <ol class="direct-descendant-selector" data-selector="X > Y">
+      <li>Content 1</li>
+      <li><a>Linkage 2</a></li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 9 -->
+    <ol class="neighbours-selector" data-selector="X ~ Y">
+      <li>Content 1</li>
+      <li class="start">Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 10 -->
+    <ol class="attribute-selector" data-selector="X[attr]">
+      <li><a title="">Linkage 1</a></li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a href="">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li><a href="#">Linkage 4</a></li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 11 -->
+    <ol class="attribute-value-selector" data-selector="X[attr=value]">
+      <li><a href="#">Linkage 1</a></li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a href="">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li><a href="#">Linkage 4</a></li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 12 -->
+    <ol
+      class="attribute-contains-value-selector"
+      data-selector="X[attr*=value]"
+    >
+      <li><a href="github.com">Linkage 1</a></li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a href="github.ru">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li><a href="github.com">Linkage 4</a></li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 13 -->
+    <ol
+      class="attribute-starts-with-value-selector"
+      data-selector="X[attr^=value]"
+    >
+      <li><a href="https://github.com/">Linkage 1</a></li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a href="http://github.ru">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li><a href="https://github.com/">Linkage 4</a></li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 14 -->
+    <ol
+      class="attribute-ends-with-value-selector"
+      data-selector="X[attr$=value]"
+    >
+      <li><a href="image.jpg">Linkage 1</a></li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a href="image.png">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li><a href="image.jpeg">Linkage 4</a></li>
+      <li><a href="image.svg">Linkage 5</a></li>
+    </ol>
+
+    <!-- Selector 15 -->
+    <ol class="data-type-selector" data-selector="X[data-type=value]">
+      <li><a data-filetype="image">Linkage 1</a></li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a data-filetype="image">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li><a data-filetype="image">Linkage 4</a></li>
+      <li><a data-filetype="image">Linkage 5</a></li>
+    </ol>
+
+    <!-- Selector 16 -->
+    <ol class="data-type-split-selector" data-selector="X[data-type~=value]">
+      <li><a data-class="red bold">Linkage 1</a></li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a data-class="blue bold underline">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li><a data-class="green underline">Linkage 4</a></li>
+      <li><a data-class="red blue">Linkage 5</a></li>
+    </ol>
+
+    <!-- Selector 17 -->
+    <ol class="input-check-selector" data-selector="X:checked">
+      <li>
+        <input id="check" name="check" type="checkbox" />
+        <label for="check">Checkbox 1</label>
+      </li>
+      <li>
+        <input id="check" name="check" type="checkbox" />
+        <label for="check">Checkbox 2</label>
+      </li>
+      <ol>
+        <li>
+          <input id="radio" name="radio" type="radio" />
+          <label for="radio">Radio 3.1</label>
+        </li>
+        <li>
+          <input id="radio" name="radio" type="radio" />
+          <label for="radio">Radio 3.2</label>
+        </li>
+        <li>
+          <input id="radio" name="radio" type="radio" />
+          <label for="radio">Radio 3.3</label>
+        </li>
+      </ol>
+      <li>
+        <input id="check" name="check" type="checkbox" />
+        <label for="check">Checkbox 4</label>
+      </li>
+      <li>
+        <input id="check" name="check" type="checkbox" />
+        <label for="check">Checkbox 5</label>
+      </li>
+    </ol>
+
+    <!-- Selector 18 -->
+    <ol class="pseudoclass-selector" data-selector="X:after X:before">
+      <li>Content 1</li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 19 -->
+    <ol class="hover-selector" data-selector="X:hover">
+      <li>Content 1</li>
+      <li><a>HOVER ME 2</a></li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a>HOVER ME 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 20 -->
+    <ol class="not-selector" data-selector="X:not(selector)">
+      <li>Content 1</li>
+      <li><a href="#">Linkage 2</a></li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a href="">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 21 -->
+    <ol class="pseudoelement-selector" data-selector="X::pseudoelement">
+      <li>Content 1</li>
+      <li><a href="#">Linkage 2</a></li>
+      <ol>
+        <li>Content 3.1</li>
+        <li><a href="">Linkage 3.2</a></li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 22 -->
+    <ol class="nth-child-selector" data-selector="X:nth-child(n)">
+      <li>Content 1</li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 23 -->
+    <ol class="nth-last-child-selector" data-selector="X:nth-last-child(n)">
+      <li>Content 1</li>
+      <li>Content 2</li>
+      <ol>
+        <li>Content 3.1</li>
+        <li>Content 3.2</li>
+        <li>Content 3.3</li>
+      </ol>
+      <li>Content 4</li>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 24 -->
+    <ol class="nth-of-type-selector" data-selector="X:nth-of-type(n)">
+      <li>Content 1</li>
+      <ol>
+        <li>Content 2.1</li>
+        <li>Content 2.2</li>
+      </ol>
+      <li>Content 3</li>
+      <ol>
+        <li>Content 4.1</li>
+        <li>Content 4.2</li>
+      </ol>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 25 -->
+    <ol class="nth-last-of-type-selector" data-selector="X:nth-last-of-type(n)">
+      <li>Content 1</li>
+      <ol>
+        <li>Content 2.1</li>
+        <li>Content 2.2</li>
+      </ol>
+      <li>Content 3</li>
+      <ol>
+        <li>Content 4.1</li>
+        <li>Content 4.2</li>
+      </ol>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 26 -->
+    <ol class="first-child-selector" data-selector="X:first-child">
+      <li>Content 1</li>
+      <ol>
+        <li>Content 2.1</li>
+        <li>Content 2.2</li>
+      </ol>
+      <li>Content 3</li>
+      <ol>
+        <li>Content 4.1</li>
+        <li>Content 4.2</li>
+      </ol>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 27 -->
+    <ol class="last-child-selector" data-selector="X:last-child">
+      <li>Content 1</li>
+      <ol>
+        <li>Content 2.1</li>
+        <li>Content 2.2</li>
+      </ol>
+      <li>Content 3</li>
+      <ol>
+        <li>Content 4.1</li>
+        <li>Content 4.2</li>
+      </ol>
+      <li>Content 5</li>
+    </ol>
+
+    <!-- Selector 28 -->
+    <ol class="only-child-selector" data-selector="X:only-child">
+      <li>Content 1</li>
+      <ol>
+        <li>Content 2.1</li>
+        <li>Content 2.2</li>
+      </ol>
+      <li>Content 3</li>
+      <li>Content 4</li>
+      <ol>
+        <li>Content 5.1</li>
+      </ol>
+      <li>Content 6</li>
+    </ol>
+
+    <!-- Selector 29 -->
+    <ol class="only-of-type-selector" data-selector="X:only-of-type">
+      <li>Content 1</li>
+      <ul>
+        <li>Content 2.1</li>
+      </ul>
+      <li>Content 3</li>
+      <li>Content 4</li>
+      <ol>
+        <li>Content 5.1</li>
+      </ol>
+      <li>Content 6</li>
+      <li>Content 7</li>
+    </ol>
+
+    <!-- Selector 30 -->
+    <ol class="first-of-type-selector" data-selector="X:first-of-type">
+      <li>Content 1</li>
+      <ol>
+        <li>Content 2.1</li>
+        <li>Content 2.2</li>
+      </ol>
+      <li>Content 3</li>
+      <ol>
+        <li>Content 4.1</li>
+        <li>Content 4.2</li>
+      </ol>
+      <li>Content 5</li>
+    </ol>
+  </body>
+</html>

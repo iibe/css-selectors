@@ -1,0 +1,247 @@
+body {
+  font-family: 'Arial', 'Roboto', sans-serif !important;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+ol,
+ul {
+  padding-left: 2rem !important;
+}
+
+body > ol {
+  padding: 2rem;
+  border: 1px solid #d1d5db;
+  position: relative;
+}
+
+body > ol::before {
+  content: attr(data-selector);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -9999;
+  display: block;
+  padding: 1rem;
+  font-size: 2.2rem;
+  line-height: 1;
+  text-align: right;
+  font-weight: bold;
+  color: rgba(29, 78, 216, 0.4);
+}
+
+.universal-selector * {
+  color: #b91c1c;
+}
+
+#id-selector {
+  color: #b91c1c;
+}
+
+.class-selector {
+  color: #b91c1c;
+}
+
+.context-selector li a {
+  color: #b91c1c;
+}
+
+.context-selector ol li {
+  color: #1d4ed8;
+}
+
+.tag-selector a {
+  color: #b91c1c;
+}
+
+.a-selectors a:link {
+  color: #047857;
+}
+
+.a-selectors a:visited {
+  color: #6d28d9;
+}
+
+.neighbour-selector li:first-of-type + li {
+  color: #b91c1c;
+}
+
+.neighbour-selector li + ol,
+.neighbour-selector li + ul {
+  color: #1d4ed8;
+}
+
+.direct-descendant-selector > li {
+  color: #b91c1c;
+}
+
+.neighbours-selector .start ~ li {
+  color: #b91c1c;
+}
+
+.attribute-selector a[title] {
+  color: #b91c1c;
+}
+
+.attribute-selector a[href] {
+  color: #047857;
+}
+
+.attribute-value-selector a[href='#'] {
+  color: #b91c1c;
+}
+
+.attribute-contains-value-selector a[href*='.com'] {
+  color: #b91c1c;
+}
+
+.attribute-starts-with-value-selector a[href^='https://'] {
+  color: #b91c1c;
+}
+
+.attribute-ends-with-value-selector a[href$='.jpg'] {
+  color: #b91c1c;
+}
+
+.attribute-ends-with-value-selector a[href$='.png'] {
+  color: #b91c1c;
+}
+
+.data-type-selector a[data-filetype='image'] {
+  color: #b91c1c;
+}
+
+.data-type-split-selector a[data-class~='red'] {
+  color: #b91c1c;
+}
+
+.data-type-split-selector a[data-class~='green'] {
+  color: #047857;
+}
+
+.data-type-split-selector a[data-class~='blue'] {
+  color: #1d4ed8;
+}
+
+.data-type-split-selector a[data-class~='bold'] {
+  font-weight: bold;
+}
+
+.data-type-split-selector a[data-class~='underline'] {
+  text-decoration: underline;
+}
+
+.input-check-selector input[type='checkbox']:checked,
+.input-check-selector input[type='radio']:checked {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #b91c1c;
+  border-radius: 100%;
+}
+
+.pseudoclass-selector li {
+  position: relative;
+  display: block;
+  border: 1px dashed rgba(51, 51, 51, 0.5);
+}
+
+.pseudoclass-selector li::before, .pseudoclass-selector li::after {
+  content: '';
+  display: block;
+  width: 0.4rem;
+  height: 0.4rem;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.pseudoclass-selector li::before {
+  left: -1rem;
+  background-color: #b91c1c;
+}
+
+.pseudoclass-selector li::after {
+  right: 2rem;
+  background-color: #047857;
+}
+
+.hover-selector a {
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-selector a:hover {
+  color: #b91c1c;
+}
+
+.not-selector a:not([href='#']) {
+  color: #b91c1c;
+}
+
+.pseudoelement-selector li:first-letter {
+  font-size: 16px;
+  font-weight: bold;
+  color: #b91c1c;
+}
+
+.nth-child-selector li:nth-child(2n + 1) {
+  color: #b91c1c;
+}
+
+.nth-child-selector li:nth-child(2n) {
+  text-decoration: underline;
+}
+
+.nth-child-selector > li:nth-child(2n) {
+  font-weight: bold;
+}
+
+.nth-last-child-selector li:nth-last-child(1) {
+  color: #b91c1c;
+}
+
+.nth-last-child-selector li:nth-last-child(2) {
+  color: #1d4ed8;
+}
+
+.nth-of-type-selector ol:nth-of-type(2) li:nth-of-type(2) {
+  color: #b91c1c;
+}
+
+.nth-last-of-type-selector ol:nth-last-of-type(1) li:nth-last-of-type(1) {
+  color: #b91c1c;
+}
+
+.first-child-selector > ol li:first-child {
+  color: #b91c1c;
+}
+
+.last-child-selector > ol li:last-child {
+  color: #b91c1c;
+}
+
+.only-child-selector > ol li:only-child {
+  color: #b91c1c;
+}
+
+.only-of-type-selector li:only-of-type {
+  color: #b91c1c;
+}
+
+.only-of-type-selector ol li:only-of-type {
+  color: #1d4ed8;
+}
+
+.first-of-type-selector li:first-of-type {
+  color: #b91c1c;
+}
+
+.first-of-type-selector ol > li:first-of-type {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=selector.css.map */
