@@ -1,6 +1,6 @@
 # CSS Selectors
 
-List of CSS3 selectors.
+Demonstration of CSS3 selectors work.
 
 ## Getting started
 
@@ -12,10 +12,8 @@ List of CSS3 selectors.
 
    > **Or:** `yarn add`
 
-2. Purge Tailwind styles (_in development mode_):
+2. Purge Tailwind styles:
 
    ```bash
    npm run tailwind
    ```
-
-   > **Or:** `yarn dev` / `yarn run dev`
