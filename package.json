@@ -1,19 +1,30 @@
 {
   "name": "css-selectors",
   "version": "1.0.0",
-  "description": "",
+  "description": "The 30 CSS Selectors You Must Memorize",
   "main": "index.js",
   "scripts": {
-    "tailwind": "postcss src/styles/compile.css -o src/styles/tailwind.css"
+    "start": "npx postcss ./styles/style.scss --output ./styles/style.css --env development --verbose",
+    "build": "npx postcss ./styles/style.scss --output ./styles/style.css --env development --verbose",
+    "watch": "npx postcss ./styles/style.scss --output ./styles/style.css --env development --verbose --watch"
   },
-  "keywords": [],
-  "author": "Roman N.",
+  "keywords": [
+    "css",
+    "selectors"
+  ],
+  "author": "Roman Narvatov <kjiibe@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.2.6",
+    "cssnano": "^5.0.14",
     "postcss": "^8.3.5",
+    "postcss-advanced-variables": "^3.0.1",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.2",
+    "postcss-scss": "^4.0.2",
     "tailwindcss": "^2.2.4"
+  },
+  "dependencies": {
+    "highlight.js": "^11.3.1"
   }
 }

@@ -1,6 +1,6 @@
-# CSS Selectors
+# The 30 CSS Selectors You Must Memorize
 
-Demonstration of CSS3 selectors work.
+Demonstration of [The 30 CSS Selectors You Must Memorize](https://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048) article.
 
 ## Getting started
 

@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      id="color-theme"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/github-dark.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"
+    ></script>
+    <script defer src="index.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header" class="header">
+      <a class="logo" href="https://github.com/iibe/css-selectors"
+        >{.css-selectors}</a
+      >
+      <nav class="nav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/iibe/css-selectors">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="color-mode">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M4.069 13h-4.069v-2h4.069c-.041.328-.069.661-.069 1s.028.672.069 1zm3.034-7.312l-2.881-2.881-1.414 1.414 2.881 2.881c.411-.529.885-1.003 1.414-1.414zm11.209 1.414l2.881-2.881-1.414-1.414-2.881 2.881c.528.411 1.002.886 1.414 1.414zm-6.312-3.102c.339 0 .672.028 1 .069v-4.069h-2v4.069c.328-.041.661-.069 1-.069zm0 16c-.339 0-.672-.028-1-.069v4.069h2v-4.069c-.328.041-.661.069-1 .069zm7.931-9c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-3.033 7.312l2.88 2.88 1.415-1.414-2.88-2.88c-.412.528-.886 1.002-1.415 1.414zm-11.21-1.415l-2.88 2.88 1.414 1.414 2.88-2.88c-.528-.411-1.003-.885-1.414-1.414zm2.312-4.897c0 2.206 1.794 4 4 4s4-1.794 4-4-1.794-4-4-4-4 1.794-4 4zm10 0c0 3.314-2.686 6-6 6s-6-2.686-6-6 2.686-6 6-6 6 2.686 6 6z"
+                />
+              </svg>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" id="hamburger">
+              <svg
+                width="24"
+                height="24"
+                xmlns="http://www.w3.org/2000/svg"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              >
+                <path
+                  d="M2.994 19.996h-.002c.031.791.267.979.954.999 1.241.013 15.514 0 16.098-.009.679-.022.92-.269.96-.943 0 0-11.384.036-18.01-.047zm3.791-3.992l-3.779-.008c-.585.008-.98.453-1.005.947-.026.523.354 1.033 1.005 1.053h18.008c.645-.034 1.01-.539.985-1.053-.027-.49-.438-.92-.999-.943-1.3-.016-6.41.003-6.554.004-.522.003-.988.277-1.296.459-.89.522-1.587 1.049-2.652 1.038-1.184-.012-1.822-.551-2.57-1.023-.289-.182-.63-.477-1.143-.474zm11.237-2.76c-.678 0-1.293-.307-1.837-.578-1.12-.557-1.213-.558-2.333 0-.543.271-1.159.578-1.838.578-.678 0-1.293-.307-1.837-.578-1.117-.557-1.214-.558-2.332 0-.544.271-1.159.578-1.838.578-.677 0-1.294-.307-1.837-.578-1.002-.499-1.472-.756-2.952.415-.143.113-.304.164-.462.164-.39 0-.756-.311-.756-.75 0-.219.096-.437.282-.584 2.08-1.661 3.239-1.244 4.559-.585.434.216.843.42 1.166.42.324 0 .734-.204 1.166-.42 1.543-.769 2.12-.776 3.676 0 .433.216.843.42 1.165.42.324 0 .734-.204 1.166-.42 1.543-.769 2.119-.776 3.676 0 .435.216.843.42 1.166.42.323 0 .732-.204 1.167-.42 1.301-.649 2.474-1.09 4.536.59.181.148.275.363.275.579 0 .412-.333.748-.751.748-.166 0-.334-.055-.475-.168-1.437-1.167-1.913-.908-2.914-.409-.544.271-1.16.578-1.838.578zm4.978-3.247h-22c.039-5.391 4.829-8.997 11.103-8.997 5.653 0 10.856 3.344 10.897 8.997zm-11.136-7c-3.646.051-7.319 1.58-8.527 4.981l-.007.019h17.34c-1.189-3.488-5.099-5.013-8.806-5zm-2.364 3c.276 0 .5.224.5.5 0 .275-.224.5-.5.5s-.5-.225-.5-.5c0-.276.224-.5.5-.5zm5 0c.276 0 .5.224.5.5 0 .275-.224.5-.5.5-.277 0-.5-.225-.5-.5 0-.276.223-.5.5-.5zm4 0c.276 0 .5.224.5.5 0 .275-.224.5-.5.5-.277 0-.5-.225-.5-.5 0-.276.223-.5.5-.5zm-12 0c.276 0 .5.224.5.5 0 .275-.224.5-.5.5s-.5-.225-.5-.5c0-.276.224-.5.5-.5zm5-1c.276 0 .5.224.5.5 0 .275-.224.5-.5.5s-.5-.225-.5-.5c0-.276.224-.5.5-.5zm5 0c.276 0 .5.224.5.5 0 .275-.224.5-.5.5-.277 0-.5-.225-.5-.5 0-.276.223-.5.5-.5zm-8-1c.276 0 .5.224.5.5 0 .275-.224.5-.5.5s-.5-.225-.5-.5c0-.276.224-.5.5-.5zm5 0c.276 0 .5.224.5.5 0 .275-.224.5-.5.5-.277 0-.5-.225-.5-.5 0-.276.223-.5.5-.5zm-10.577 10c.173-.002 3.778.005 4.077.007 1.443.009 2.422 1.672 3.508 1.666.968-.005 2.284-1.664 3.715-1.666.179-.001 6.189-.016 6.854-.007 1.655.061 2.843 1.35 2.919 2.846.048.931-.338 1.812-1.031 2.418.276 2.333-.924 3.656-2.871 3.725-.6.009-14.933.021-16.188.009-2.168-.068-3.111-1.549-2.88-3.743-.69-.606-1.07-1.485-1.022-2.409.076-1.496 1.264-2.785 2.919-2.846z"
+                />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar">
+      <nav class="nav">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#1" class="nav-link">1) Universal selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#2" class="nav-link">2) ID selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#3" class="nav-link">3) Class selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#4" class="nav-link">4) Context selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#5" class="nav-link">5) Tag selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#6" class="nav-link">6) Link selectors</a>
+          </li>
+          <li class="nav-item">
+            <a href="#7" class="nav-link">7) Neighbour selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#8" class="nav-link">8) Direct descendant selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#9" class="nav-link">9) Neighbours selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#10" class="nav-link">10) Attribute selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#11" class="nav-link">11) Attribute value selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#12" class="nav-link">
+              12) Attribute contains value selector
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#13" class="nav-link">
+              13) Attribute starts with value selector
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#14" class="nav-link">
+              14) Attribute ends with value selector
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#15" class="nav-link">15) Data type selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#16" class="nav-link">16) Data type split selector</a>
+          </li>
+          <li class="nav-item">
+            <a href="#17" class="nav-link">17) X:checked</a>
+          </li>
+          <li class="nav-item">
+            <a href="#18" class="nav-link">18) X:after and X:before</a>
+          </li>
+          <li class="nav-item">
+            <a href="#19" class="nav-link">19) X:hover</a>
+          </li>
+          <li class="nav-item">
+            <a href="#20" class="nav-link">20) X:not(selector)</a>
+          </li>
+          <li class="nav-item">
+            <a href="#21" class="nav-link">
+              21) X::first-letter and X::first-list
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#22" class="nav-link">22) X:nth-child(n)</a>
+          </li>
+          <li class="nav-item">
+            <a href="#23" class="nav-link">23) X:nth-last-child(n)</a>
+          </li>
+          <li class="nav-item">
+            <a href="#24" class="nav-link">24) X:nth-of-type(n)</a>
+          </li>
+          <li class="nav-item">
+            <a href="#25" class="nav-link">25) X:nth-last-of-type(n)</a>
+          </li>
+          <li class="nav-item">
+            <a href="#26" class="nav-link">26) X:first-child</a>
+          </li>
+          <li class="nav-item">
+            <a href="#27" class="nav-link">27) X:last-child</a>
+          </li>
+          <li class="nav-item">
+            <a href="#28" class="nav-link">28) X:only-child</a>
+          </li>
+          <li class="nav-item">
+            <a href="#29" class="nav-link">29) X:only-of-type</a>
+          </li>
+          <li class="nav-item">
+            <a href="#30" class="nav-link">30) X:first-of-type</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Go to -->
+    <a id="go-to" class="nav-link" href="#1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm18-1h-4v7h-4v-7h-4l6-6 6 6z"
+        />
+      </svg>
+    </a>
+
+    <!-- Main -->
+    <main id="main" class="main">
+      <article id="1">
+        <h2>1) Universal selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="universal-selector">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .universal-selector * {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs universal-selector">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="2">
+        <h2>2) ID selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <ol id="id-selector">
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              #id-selector {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <ol id="id-selector">
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="3">
+        <h2>3) Class selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <ol class="class-selector">
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .class-selector {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <ol class="class-selector">
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="4">
+        <h2>4) Context selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="context-selector">
+                <li>Item 1</li>
+                <li><a>Link 2</a></li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a>Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .context-selector li a {
+                @apply text-red-600;
+              }
+              .context-selector ol li {
+                @apply text-green-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs context-selector">
+              <li>Item 1</li>
+              <li><a>Link 2</a></li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a>Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="5">
+        <h2>5) Tag selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="tag-selector">
+                <li>Item 1</li>
+                <li><a>Link 2</a></li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a>Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .tag-selector a {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs tag-selector">
+              <li>Item 1</li>
+              <li><a>Link 2</a></li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a>Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="6">
+        <h2>6) Link selectors</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="link-selectors">
+                <li><a href="#">Link 1</a></li>
+                <li>Item 2</li>
+                <ol>
+                  <li><a href="#">Link 3.1</a></li>
+                  <li>Item 3.2</li>
+                  <li><a href="#">Link 3.3</a></li>
+                </ol>
+                <li>Item 4</li>
+                <li><a href="#">Link 5</a></li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .link-selectors a:link {
+                @apply text-green-600;
+              }
+              .link-selectors a:visited {
+                @apply text-purple-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs link-selectors">
+              <li><a href="#">Link 1</a></li>
+              <li>Item 2</li>
+              <ol>
+                <li><a href="#">Link 3.1</a></li>
+                <li>Item 3.2</li>
+                <li><a href="#">Link 3.3</a></li>
+              </ol>
+              <li>Item 4</li>
+              <li><a href="#">Link 5</a></li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="7">
+        <h2>7) Neighbour selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="neighbour-selector">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .neighbour-selector {
+                li:first-of-type + li {
+                  @apply text-red-600;
+                }
+                ol + li {
+                  @apply text-green-600;
+                }
+                li + ol {
+                  @apply text-blue-600;
+                }
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs neighbour-selector">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="8">
+        <h2>8) Direct descendant selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="direct-descendant-selector">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .direct-descendant-selector > li {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs direct-descendant-selector">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="9">
+        <h2>9) Neighbours selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="neighbours-selector">
+                <li>Item 1</li>
+                <li class="from">From 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .neighbours-selector .from ~ li {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs neighbours-selector">
+              <li>Item 1</li>
+              <li class="from">From 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="10">
+        <h2>10) Attribute selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="attribute-selector">
+                <li><a title="Link 1">Link 1</a></li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a href="">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li><a href="#">Link 5</a></li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .attribute-selector {
+                a[title] {
+                  @apply text-red-600;
+                }
+                a[href] {
+                  @apply text-green-600;
+                }
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs attribute-selector">
+              <li><a title="Link 1">Link 1</a></li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a href="">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li><a href="#">Link 5</a></li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="11">
+        <h2>11) Attribute value selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="attribute-value-selector">
+                <li><a href="#">Link 1</a></li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a href="">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li><a href="#">Link 5</a></li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .attribute-value-selector a[href="#"] {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs attribute-value-selector">
+              <li><a href="#">Link 1</a></li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a href="">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li><a href="#">Link 5</a></li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="12">
+        <h2>12) Attribute contains value selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="attribute-contains-value-selector">
+                <li><a href="github.com">Link 1</a></li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a href="github.ru">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li><a href="github.com">Link 4</a></li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .attribute-contains-value-selector a[href*=".com"] {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs attribute-contains-value-selector">
+              <li><a href="github.com">Link 1</a></li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a href="github.ru">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li><a href="github.com">Link 4</a></li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="13">
+        <h2>13) Attribute starts with value selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="attribute-starts-with-value-selector">
+                <li><a href="https://github.com/">Link 1</a></li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a href="http://github.ru">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li><a href="https://github.com/">Link 4</a></li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .attribute-starts-with-value-selector a[href^="https://"] {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs attribute-starts-with-value-selector">
+              <li><a href="https://github.com/">Link 1</a></li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a href="http://github.ru">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li><a href="https://github.com/">Link 4</a></li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="14">
+        <h2>14) Attribute ends with value selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="attribute-ends-with-value-selector">
+                <li><a href="image.jpg">Link 1</a></li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a href="image.png">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li><a href="image.jpeg">Link 4</a></li>
+                <li><a href="image.svg">Link 5</a></li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .attribute-ends-with-value-selector a[href$=".jpg"] {
+                @apply text-red-600;
+              }
+              .attribute-ends-with-value-selector a[href$=".png"] {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs attribute-ends-with-value-selector">
+              <li><a href="image.jpg">Link 1</a></li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a href="image.png">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li><a href="image.jpeg">Link 4</a></li>
+              <li><a href="image.svg">Link 5</a></li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="15">
+        <h2>15) Data type selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="data-type-selector">
+                <li><a data-filetype="image">Link 1</a></li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a data-filetype="image">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li><a data-filetype="image">Link 4</a></li>
+                <li><a data-filetype="image">Link 5</a></li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .data-type-selector a[data-filetype="image"] {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs data-type-selector">
+              <li><a data-filetype="image">Link 1</a></li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a data-filetype="image">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li><a data-filetype="image">Link 4</a></li>
+              <li><a data-filetype="image">Link 5</a></li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="16">
+        <h2>16) Data type split selector</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="data-type-split-selector">
+                <li><a data-class="red bold">Link 1</a></li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a data-class="blue bold underline">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li><a data-class="green underline">Link 4</a></li>
+                <li><a data-class="red blue">Link 5</a></li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .data-type-split-selector {
+                a[data-class~="red"] {
+                  @apply text-red-600;
+                }
+                a[data-class~="green"] {
+                  @apply text-green-600;
+                }
+                a[data-class~="blue"] {
+                  @apply text-blue-600;
+                }
+                a[data-class~="bold"] {
+                  font-weight: bold;
+                }
+                a[data-class~="underline"] {
+                  text-decoration: underline;
+                }
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs data-type-split-selector">
+              <li><a data-class="red bold">Link 1</a></li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a data-class="blue bold underline">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li><a data-class="green underline">Link 4</a></li>
+              <li><a data-class="red blue">Link 5</a></li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="17">
+        <h2>17) X:checked</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="hljs input-check-selector">
+                <li>
+                  <input id="check-1" type="checkbox" checked />
+                  <label for="check-1">Checkbox 1</label>
+                </li>
+                <li>
+                  <input id="check-2" type="checkbox" />
+                  <label for="check-2">Checkbox 2</label>
+                </li>
+                <ol>
+                  <li>
+                    <input id="radio-1" name="radio-group" type="radio" checked />
+                    <label for="radio-1">Radiobox 3.1</label>
+                  </li>
+                  <li>
+                    <input id="radio-2" name="radio-group" type="radio" />
+                    <label for="radio-2">Radiobox 3.2</label>
+                  </li>
+                  <li>
+                    <input id="radio-3" name="radio-group" type="radio" />
+                    <label for="radio-3">Radiobox 3.3</label>
+                  </li>
+                </ol>
+                <li>
+                  <input id="check-3" type="checkbox" />
+                  <label for="check-3">Checkbox 4</label>
+                </li>
+                <li>
+                  <input id="check-4" type="checkbox" />
+                  <label for="check-4">Checkbox 5</label>
+                </li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .input-check-selector {
+                input[type="checkbox"]:checked,
+                input[type="radio"]:checked {
+                  @apply appearance-none bg-red-600;
+                  width: 13px;
+                  height: 13px;
+                }
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs input-check-selector">
+              <li>
+                <input id="check-1" type="checkbox" checked />
+                <label for="check-1">Checkbox 1</label>
+              </li>
+              <li>
+                <input id="check-2" type="checkbox" />
+                <label for="check-2">Checkbox 2</label>
+              </li>
+              <ol>
+                <li>
+                  <input id="radio-1" name="radio-group" type="radio" checked />
+                  <label for="radio-1">Radiobox 3.1</label>
+                </li>
+                <li>
+                  <input id="radio-2" name="radio-group" type="radio" />
+                  <label for="radio-2">Radiobox 3.2</label>
+                </li>
+                <li>
+                  <input id="radio-3" name="radio-group" type="radio" />
+                  <label for="radio-3">Radiobox 3.3</label>
+                </li>
+              </ol>
+              <li>
+                <input id="check-3" type="checkbox" />
+                <label for="check-3">Checkbox 4</label>
+              </li>
+              <li>
+                <input id="check-4" type="checkbox" />
+                <label for="check-4">Checkbox 5</label>
+              </li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="18">
+        <h2>18) X:after and X:before</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="pseudoclass-selector">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .pseudoclass-selector li {
+                @apply flex items-center;
+                &::before,
+                &::after {
+                  content: "";
+                  @apply inline-block w-2 h-2;
+                }
+                &::before {
+                  @apply bg-red-600 mr-2;
+                }
+                &::after {
+                  @apply bg-green-600 ml-4;
+                }
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs pseudoclass-selector">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="19">
+        <h2>19) X:hover</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="hover-selector">
+                <li>Item 1</li>
+                <li><a>Hover me 2</a></li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a>Hover me 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .hover-selector a {
+                @apply cursor-pointer transition;
+                &:hover {
+                  @apply text-red-600;
+                }
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs hover-selector">
+              <li>Item 1</li>
+              <li><a>Hover me 2</a></li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a>Hover me 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="20">
+        <h2>20) X:not(selector)</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="not-selector">
+                <li>Item 1</li>
+                <li><a href="https://github.com/topics/js">Link 2</a></li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a href="https://github.com/topics/css">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .not-selector a:not([href="https://github.com/topics/js"]) {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs not-selector">
+              <li>Item 1</li>
+              <li><a href="https://github.com/topics/js">Link 2</a></li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a href="https://github.com/topics/css">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="21">
+        <h2>21) X::first-letter and X::first-list</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="pseudoelement-selector">
+                <li>
+                  Item 1: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Architecto expedita repellendus ducimus perferendis facere
+                  labore saepe suscipit a nihil, sed quod numquam mollitia
+                  consequuntur exercitationem asperiores perspiciatis quasi dolore
+                  amet, aliquid nesciunt nam ratione.
+                </li>
+                <li><a href="#">Link 2</a></li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li><a href="">Link 3.2</a></li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .pseudoelement-selector li::first-line {
+                @apply text-green-600;
+              }
+              .pseudoelement-selector li::first-letter {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs pseudoelement-selector">
+              <li>
+                Item 1: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Architecto expedita repellendus ducimus perferendis facere
+                labore saepe suscipit a nihil, sed quod numquam mollitia
+                consequuntur exercitationem asperiores perspiciatis quasi dolore
+                amet, aliquid nesciunt nam ratione.
+              </li>
+              <li><a href="#">Link 2</a></li>
+              <ol>
+                <li>Item 3.1</li>
+                <li><a href="">Link 3.2</a></li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="22">
+        <h2>22) X:nth-child(n)</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="nth-child-selector">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .nth-child-selector li:nth-child(2n + 1) {
+                @apply text-red-600;
+              }
+              .nth-child-selector li:nth-child(2n) {
+                @apply text-green-600;
+              }
+              .nth-child-selector > li:nth-child(2n) {
+                @apply underline;
+              }
+              .nth-child-selector > li:nth-child(2n + 1) {
+                @apply line-through;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs nth-child-selector">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="23">
+        <h2>23) X:nth-last-child(n)</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="nth-last-child-selector">
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <ol>
+                  <li>Item 3.1</li>
+                  <li>Item 3.2</li>
+                  <li>Item 3.3</li>
+                </ol>
+                <li>Item 4</li>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .nth-last-child-selector li:nth-last-child(1) {
+                @apply text-red-600;
+              }
+              .nth-last-child-selector li:nth-last-child(2) {
+                @apply text-green-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs nth-last-child-selector">
+              <li>Item 1</li>
+              <li>Item 2</li>
+              <ol>
+                <li>Item 3.1</li>
+                <li>Item 3.2</li>
+                <li>Item 3.3</li>
+              </ol>
+              <li>Item 4</li>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="24">
+        <h2>24) X:nth-of-type(n)</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="nth-of-type-selector">
+                <li>Item 1</li>
+                <ol>
+                  <li>Item 2.1</li>
+                  <li>Item 2.2</li>
+                </ol>
+                <li>Item 3</li>
+                <ol>
+                  <li>Item 4.1</li>
+                  <li>Item 4.2</li>
+                </ol>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .nth-of-type-selector li:nth-of-type(2) {
+                @apply text-red-600;
+              }
+              .nth-of-type-selector ol:nth-of-type(2) li:nth-of-type(1) {
+                @apply text-green-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs nth-of-type-selector">
+              <li>Item 1</li>
+              <ol>
+                <li>Item 2.1</li>
+                <li>Item 2.2</li>
+              </ol>
+              <li>Item 3</li>
+              <ol>
+                <li>Item 4.1</li>
+                <li>Item 4.2</li>
+              </ol>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="25">
+        <h2>25) X:nth-last-of-type(n)</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="nth-last-of-type-selector">
+                <li>Item 1</li>
+                <ol>
+                  <li>Item 2.1</li>
+                  <li>Item 2.2</li>
+                </ol>
+                <li>Item 3</li>
+                <ol>
+                  <li>Item 4.1</li>
+                  <li>Item 4.2</li>
+                </ol>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .nth-last-of-type-selector li:nth-last-of-type(2) {
+                @apply text-red-600;
+              }
+              .nth-last-of-type-selector ol:nth-last-of-type(2) li:nth-last-of-type(1) {
+                @apply text-green-600;
+              }
+              .nth-last-of-type-selector li:nth-last-of-type(3) {
+                @apply text-blue-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs nth-last-of-type-selector">
+              <li>Item 1</li>
+              <ol>
+                <li>Item 2.1</li>
+                <li>Item 2.2</li>
+              </ol>
+              <li>Item 3</li>
+              <ol>
+                <li>Item 4.1</li>
+                <li>Item 4.2</li>
+              </ol>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="26">
+        <h2>26) X:first-child</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="first-child-selector">
+                <li>Item 1</li>
+                <ol>
+                  <li>Item 2.1</li>
+                  <li>Item 2.2</li>
+                </ol>
+                <li>Item 3</li>
+                <ol>
+                  <li>Item 4.1</li>
+                  <li>Item 4.2</li>
+                </ol>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .first-child-selector li:first-child {
+                @apply text-red-600;
+              }
+              .first-child-selector > ol li:first-child {
+                @apply underline;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs first-child-selector">
+              <li>Item 1</li>
+              <ol>
+                <li>Item 2.1</li>
+                <li>Item 2.2</li>
+              </ol>
+              <li>Item 3</li>
+              <ol>
+                <li>Item 4.1</li>
+                <li>Item 4.2</li>
+              </ol>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="27">
+        <h2>27) X:last-child</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="last-child-selector">
+                <li>Item 1</li>
+                <ol>
+                  <li>Item 2.1</li>
+                  <li>Item 2.2</li>
+                </ol>
+                <li>Item 3</li>
+                <ol>
+                  <li>Item 4.1</li>
+                  <li>Item 4.2</li>
+                </ol>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .last-child-selector li:last-child {
+                @apply text-red-600;
+              }
+              .last-child-selector > ol li:last-child {
+                @apply underline;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs last-child-selector">
+              <li>Item 1</li>
+              <ol>
+                <li>Item 2.1</li>
+                <li>Item 2.2</li>
+              </ol>
+              <li>Item 3</li>
+              <ol>
+                <li>Item 4.1</li>
+                <li>Item 4.2</li>
+              </ol>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="28">
+        <h2>28) X:only-child</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="only-child-selector">
+                <li>Item 1</li>
+                <ol>
+                  <li>Item 2.1</li>
+                  <li>Item 2.2</li>
+                </ol>
+                <li>Item 3</li>
+                <ol>
+                  <li>Item 4.1</li>
+                </ol>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .only-child-selector li:only-child {
+                @apply text-red-600;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs only-child-selector">
+              <li>Item 1</li>
+              <ol>
+                <li>Item 2.1</li>
+                <li>Item 2.2</li>
+              </ol>
+              <li>Item 3</li>
+              <ol>
+                <li>Item 4.1</li>
+              </ol>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="29">
+        <h2>29) X:only-of-type</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="hljs only-of-type-selector">
+                <li>Item 1</li>
+                <ul>
+                  <li>Item 2.1</li>
+                </ul>
+                <li>Item 3</li>
+                <ol>
+                  <li>Item 4.1</li>
+                </ol>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .only-of-type-selector li:only-of-type {
+                @apply text-red-600;
+              }
+              .only-of-type-selector ol li:only-of-type {
+                @apply underline;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs only-of-type-selector">
+              <li>Item 1</li>
+              <ul>
+                <li>Item 2.1</li>
+              </ul>
+              <li>Item 3</li>
+              <ol>
+                <li>Item 4.1</li>
+              </ol>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+
+      <article id="30">
+        <h2>30) X:first-of-type</h2>
+        <div>
+          <section>
+            <h3>|> HTML:</h3>
+            <pre><code class="language-html">
+              <ol class="first-of-type-selector">
+                <li>Item 1</li>
+                <ol>
+                  <li>Item 2.1</li>
+                  <li>Item 2.2</li>
+                </ol>
+                <li>Item 3</li>
+                <ol>
+                  <li>Item 4.1</li>
+                  <li>Item 4.2</li>
+                </ol>
+                <li>Item 5</li>
+              </ol>
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> SCSS:</h3>
+            <pre><code class="language-scss">
+              .first-of-type-selector li:first-of-type {
+                @apply text-red-600;
+              }
+              .first-of-type-selector ol li:first-of-type {
+                @apply underline;
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h3>|> RESULT:</h3>
+            <ol class="hljs first-of-type-selector">
+              <li>Item 1</li>
+              <ol>
+                <li>Item 2.1</li>
+                <li>Item 2.2</li>
+              </ol>
+              <li>Item 3</li>
+              <ol>
+                <li>Item 4.1</li>
+                <li>Item 4.2</li>
+              </ol>
+              <li>Item 5</li>
+            </ol>
+          </section>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

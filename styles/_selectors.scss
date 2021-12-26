@@ -1,0 +1,245 @@
+// 1) Universal selector
+.universal-selector * {
+  @apply text-red-600;
+}
+
+// 2) ID selector
+#id-selector {
+  @apply text-red-600;
+}
+
+// 3) Class selector
+.class-selector {
+  @apply text-red-600;
+}
+
+// 4) Context selector
+.context-selector li a {
+  @apply text-red-600;
+}
+.context-selector ol li {
+  @apply text-green-600;
+}
+
+// 5) Tag selector
+.tag-selector a {
+  @apply text-red-600;
+}
+
+// 6) Link selectors
+.link-selectors a:link {
+  @apply text-green-600;
+}
+.link-selectors a:visited {
+  @apply text-purple-600;
+}
+
+// 7) Neighbour selector
+.neighbour-selector {
+  li:first-of-type + li {
+    @apply text-red-600;
+  }
+  ol + li {
+    @apply text-green-600;
+  }
+  li + ol {
+    @apply text-blue-600;
+  }
+}
+
+// 8) Direct descendant selector
+.direct-descendant-selector > li {
+  @apply text-red-600;
+}
+
+// 9) Neighbours selector
+.neighbours-selector .from ~ li {
+  @apply text-red-600;
+}
+
+// 10) Attribute selector
+.attribute-selector {
+  a[title] {
+    @apply text-red-600;
+  }
+  a[href] {
+    @apply text-green-600;
+  }
+}
+
+// 11) Attribute value selector
+.attribute-value-selector a[href="#"] {
+  @apply text-red-600;
+}
+
+// 12) Attribute contains value selector
+.attribute-contains-value-selector a[href*=".com"] {
+  @apply text-red-600;
+}
+
+// 13) Attribute starts with value selector
+.attribute-starts-with-value-selector a[href^="https://"]
+{
+  @apply text-red-600;
+}
+
+// 14) Attribute ends with value selector
+.attribute-ends-with-value-selector a[href$=".jpg"] {
+  @apply text-red-600;
+}
+.attribute-ends-with-value-selector a[href$=".png"] {
+  @apply text-red-600;
+}
+
+// 15) Data type selector
+.data-type-selector a[data-filetype="image"] {
+  @apply text-red-600;
+}
+
+// 16) Data type split selector
+.data-type-split-selector {
+  a[data-class~="red"] {
+    @apply text-red-600;
+  }
+  a[data-class~="green"] {
+    @apply text-green-600;
+  }
+  a[data-class~="blue"] {
+    @apply text-blue-600;
+  }
+  a[data-class~="bold"] {
+    font-weight: bold;
+  }
+  a[data-class~="underline"] {
+    text-decoration: underline;
+  }
+}
+
+// 17) X:checked
+.input-check-selector {
+  input[type="checkbox"],
+  input[type="radio"] {
+    &:checked {
+      @apply appearance-none bg-red-600;
+      width: 13px;
+      height: 13px;
+    }
+  }
+}
+
+// 18) X:after and X:before
+.pseudoclass-selector li {
+  @apply flex items-center;
+
+  &::before,
+  &::after {
+    content: "";
+    @apply inline-block w-2 h-2;
+  }
+  &::before {
+    @apply bg-red-600 mr-2;
+  }
+  &::after {
+    @apply bg-green-600 ml-4;
+  }
+}
+
+// 19) X:hover
+.hover-selector a {
+  @apply cursor-pointer transition;
+  &:hover {
+    @apply text-red-600;
+  }
+}
+
+// 20) X:not(selector)
+.not-selector a:not([href="https://github.com/topics/js"])
+{
+  @apply text-red-600;
+}
+
+// 21) X::first-line and X::first-letter
+.pseudoelement-selector li::first-line {
+  @apply text-green-600;
+}
+.pseudoelement-selector li::first-letter {
+  @apply text-red-600;
+}
+
+// 22) X:nth-child(n)
+.nth-child-selector li:nth-child(2n + 1) {
+  @apply text-red-600;
+}
+.nth-child-selector li:nth-child(2n) {
+  @apply text-green-600;
+}
+.nth-child-selector > li:nth-child(2n) {
+  @apply underline;
+}
+.nth-child-selector > li:nth-child(2n + 1) {
+  @apply line-through;
+}
+
+// 23) X:nth-last-child(n)
+.nth-last-child-selector li:nth-last-child(1) {
+  @apply text-red-600;
+}
+.nth-last-child-selector li:nth-last-child(2) {
+  @apply text-green-600;
+}
+
+// 24) X:nth-of-type(n)
+.nth-of-type-selector li:nth-of-type(2) {
+  @apply text-red-600;
+}
+.nth-of-type-selector ol:nth-of-type(2) li:nth-of-type(1) {
+  @apply text-green-600;
+}
+
+// 25) X:nth-last-of-type(n)
+.nth-last-of-type-selector li:nth-last-of-type(2) {
+  @apply text-red-600;
+}
+.nth-last-of-type-selector ol:nth-last-of-type(2) li:nth-last-of-type(1) {
+  @apply text-green-600;
+}
+.nth-last-of-type-selector li:nth-last-of-type(3) {
+  @apply text-blue-600;
+}
+
+// 26) X:first-child
+.first-child-selector li:first-child {
+  @apply text-red-600;
+}
+.first-child-selector > ol li:first-child {
+  @apply underline;
+}
+
+// 27) X:last-child
+.last-child-selector li:last-child {
+  @apply text-red-600;
+}
+.last-child-selector > ol li:last-child {
+  @apply underline;
+}
+
+// 28) X:only-child
+.only-child-selector li:only-child {
+  @apply text-red-600;
+}
+
+// 29) X:only-of-type
+.only-of-type-selector li:only-of-type {
+  @apply text-red-600;
+}
+.only-of-type-selector ol li:only-of-type {
+  @apply underline;
+}
+
+// 30) X:first-of-type
+.first-of-type-selector li:first-of-type {
+  @apply text-red-600;
+}
+.first-of-type-selector ol li:first-of-type {
+  @apply underline;
+}
