@@ -46,7 +46,7 @@ body {
 /* SIDEBAR */
 .sidebar {
   @apply hidden;
-  @apply min-w-max w-3/4 p-2;
+  @apply w-full md:w-3/4 xl:w-2/3 2xl:w-1/2 p-2;
   @apply bg-gray-50 dark:bg-gray-900;
   @apply border-l border-gray-200 dark:border-gray-700;
   @apply fixed bottom-0 right-0 z-50;
@@ -58,6 +58,8 @@ body {
   }
 
   .nav {
+    @apply leading-normal;
+
     &-menu {
       @apply list-none;
       @apply flex flex-col divide-y divide-gray-200 dark:divide-gray-700;
