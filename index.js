@@ -51,8 +51,12 @@ document.getElementById("color-mode").addEventListener("click", (e) => {
   }
 });
 
-// NOTE: Hamburget behavior
+// NOTE: Hamburger/sidebar behavior
 document.getElementById("hamburger").addEventListener("click", (e) => {
   e.preventDefault();
+  document.getElementById("sidebar").classList.toggle("sidebar-active");
+});
+document.getElementById("sidebar").addEventListener("click", (e) => {
+  e.stopPropagation();
   document.getElementById("sidebar").classList.toggle("sidebar-active");
 });
