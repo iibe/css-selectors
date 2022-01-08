@@ -51,8 +51,8 @@ body {
   @apply border-l border-gray-200 dark:border-gray-700;
   @apply fixed bottom-0 right-0 z-50;
   @apply overflow-y-auto overscroll-y-contain;
-  height: calc(100% - 128px);
 
+  height: calc(100% - 128px);
   @media screen(md) {
     height: calc(100% - 93px);
   }
@@ -94,6 +94,11 @@ body {
 
   article {
     @apply grid grid-cols-1 gap-y-4;
+
+    scroll-margin-top: calc(128px + 16px);
+    @media screen(md) {
+      scroll-margin-top: calc(93px + 16px);
+    }
 
     h2 {
       @apply font-bold text-xl;
